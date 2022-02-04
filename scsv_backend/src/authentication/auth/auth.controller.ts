@@ -15,7 +15,6 @@ export class AuthController {
 
     @Get("/onlyauth")
     @UseGuards(AuthGuard("jwt"))
-  
     async hiddenInformation(){
         return "hidden information";
     }

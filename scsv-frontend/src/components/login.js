@@ -31,6 +31,9 @@ const Login = () => {
         if(res.data.token){
           console.log(res.data.token);
           localStorage.setItem("scsvJWT", res.data.token)
+          setUserContext(oldValues => {
+            return { ...oldValues, token: res.data.token }
+          })
         }
       })
 

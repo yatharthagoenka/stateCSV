@@ -2,6 +2,7 @@ import { Controller, Get, Res, HttpStatus, Param, NotFoundException, Post, Body,
 import { StateService } from './state.service';
 import { AuthGuard } from '@nestjs/passport/dist/auth.guard';
 import { CreateStateDTO } from './dto/create-state.dto';
+import { RemoveStateDTO } from './dto/remove-state.dto';
 import { ValidateObjectId } from './shared/pipes/validate-object-id.pipes';
     
 @Controller('state')
@@ -52,7 +53,7 @@ export class StateController {
     
     @Delete('/delete')
     @UseGuards(AuthGuard("jwt"))
-    async deleteState(@Res() res, @Query('stateID', new ValidateObjectId()) stateID) {
+    async deleteState(@Res() res,  @Query('stateID', new ValidateObjectId()) stateID) {
         const deletedState = await this.stateService.deleteState(stateID);
         if (!deletedState) {
             throw new NotFoundException('State does not exist!');

@@ -1,7 +1,9 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 
 import Index from "./components/index";
+import Header from "./components/header";
 import AuthPage from "./components/authPage";
+import Add from "./components/add";
 import { UserContext } from "./context/UserContext";
 
 import './App.css';
@@ -19,18 +21,18 @@ function App() {
 
 
   return !localStorage.getItem("scsvJWT")?(
+    <AuthPage/>
+  ):(
     <>
     <Router>
+      <Header/>
       <Routes>
-        <Route exact path="/" element={<AuthPage/>} />
-        {/* <Route path="/index" element={<Index/>} /> */}
+        <Route path="/" element={<Index/>} />
+        <Route path="/add" element={<Add/>} />
       </Routes>
     </Router>
     
     </>
-    
-  ):(
-    <Index/>
   )
 }
 

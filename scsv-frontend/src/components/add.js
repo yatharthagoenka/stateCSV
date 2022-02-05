@@ -79,6 +79,7 @@ export default function Add() {
                 }}>Populate Table</Button>
             <br/>
             <br/>
+            <p>Click Add for each row you wish to be added to the database. Once done, head back to the Home tab to view the updated data.</p>
             {csvArray.length>0 ? 
             <>
                 <Table striped bordered hoverable>
